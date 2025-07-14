@@ -55,9 +55,33 @@ INSERT INTO enrollments (student_id, course_id) VALUES
 (10, 6), (10, 7), (10, 8);
 
 -- show all enrollment with the student name + course name
+SELECT s.name, c.title FROM enrollments e
+INNER JOIN students s on e.student_id = s.student_id
+INNER JOIN courses c on e.course_id = c.course_id;
+
 -- show each student count how many course he has enrolled
+SELECT s.*, count(e.course_id) FROM students s
+LEFT JOIN enrollments e on e.student_id = s.student_id
+GROUP BY s.student_id, s.name;
+
 -- show each course count how many students enrolled
+SELECT c.course_id, c.title, count(e.student_id) FROM courses c
+LEFT JOIN enrollments e on e.course_id = c.course_id
+GROUP BY c.course_id, c.title;
+
 -- show courses with no studets
+SELECT c.course_id, c.title, count(e.student_id) FROM courses c
+LEFT JOIN enrollments e on e.course_id = c.course_id
+GROUP BY c.course_id, c.title
+HAVING count(e.student_id) = 0;
+
 -- show studetns which did not enroll
+SELECT s.*, count(e.course_id) FROM students s
+LEFT JOIN enrollments e on e.student_id = s.student_id
+GROUP BY s.student_id, s.name
+HAVING count(e.course_id) = 0;
 
-
+-- different approach
+SELECT s.* FROM students s
+LEFT JOIN enrollments e on e.student_id = s.student_id
+WHERE e.course_id is null;
