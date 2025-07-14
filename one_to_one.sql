@@ -4,9 +4,8 @@ CREATE TABLE persons (
 );
 
 CREATE TABLE passports (
-    passport_id INTEGER PRIMARY KEY,
+    passport_number TEXT PRIMARY KEY,
     person_id INTEGER UNIQUE,
-    passport_number TEXT UNIQUE NOT NULL,
     FOREIGN KEY (person_id) REFERENCES persons(person_id)
 );
 
@@ -22,19 +21,22 @@ INSERT INTO persons (person_id, name) VALUES
 (9, 'Isaac'),
 (10, 'Julia');
 
-INSERT INTO passports (passport_id, person_id, passport_number) VALUES
-(1, 1, 'A123456'),
-(2, 2, 'B654321'),
-(3, 3, 'C789012'),
-(4, 4, 'D345678'),
-(5, 5, 'E901234'),
-(6, 6, 'F567890'),
-(7, 7, 'G432109'),
-(8, 8, 'H876543'),
-(9, 9, 'I210987'),
-(10, 10, 'J678901');
+INSERT INTO passports (person_id, passport_number) VALUES
+(1, 'A123456'),
+(2, 'B654321'),
+(3, 'C789012'),
+(4, 'D345678'),
+(5, 'E901234'),
+(6, 'F567890'),
+(7, 'G432109'),
+(8, 'H876543'),
+(9, 'I210987'),
+(10, 'J678901');
 
 -- show all the people with passport
+SELECT pe.*, p.passport_number FROM passports p
+INNER JOIN persons pe on pe.person_id = p.person_id;
+
 -- show all people with/without passport
 
 
