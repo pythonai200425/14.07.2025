@@ -19,7 +19,9 @@ INSERT INTO persons (person_id, name) VALUES
 (7, 'George'),
 (8, 'Hannah'),
 (9, 'Isaac'),
-(10, 'Julia');
+(10, 'Julia'),
+(11, 'Jessica'),
+(12, 'Jordan');
 
 INSERT INTO passports (person_id, passport_number) VALUES
 (1, 'A123456'),
@@ -35,8 +37,9 @@ INSERT INTO passports (person_id, passport_number) VALUES
 
 -- show all the people with passport
 SELECT pe.*, p.passport_number FROM passports p
-INNER JOIN persons pe on pe.person_id = p.person_id;
+LEFT JOIN persons pe on pe.person_id = p.person_id;
 
 -- show all people with/without passport
-
+SELECT pe.*, p.passport_number FROM persons pe
+LEFT JOIN passports p on pe.person_id = p.person_id;
 
