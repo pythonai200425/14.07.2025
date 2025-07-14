@@ -39,6 +39,11 @@ INSERT INTO books (book_id, title, author_id) VALUES
 (13, 'Kafka on the Shore', 10);
 
 -- all books and the author
--- Only authors that DO NOT have a book in the list
+SELECT b.*, a.name FROM books b
+join authors a ON b.author_id = a.author_id;
 
+-- Only authors that DO NOT have a book in the list
+SELECT a.*, b.* FROM authors a
+LEFT JOIN books b ON b.author_id = a.author_id;
+WHERE b.author_id is NULL;
 
