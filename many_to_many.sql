@@ -75,7 +75,7 @@ LEFT JOIN enrollments e on e.course_id = c.course_id
 GROUP BY c.course_id, c.title
 HAVING count(e.student_id) = 0;
 
--- show studetns which did not enroll
+-- show students which did not enroll
 SELECT s.*, count(e.course_id) FROM students s
 LEFT JOIN enrollments e on e.student_id = s.student_id
 GROUP BY s.student_id, s.name
