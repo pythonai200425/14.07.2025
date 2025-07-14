@@ -39,6 +39,6 @@ INSERT INTO books (book_id, title, author_id) VALUES
 (13, 'Kafka on the Shore', 10);
 
 -- all books and the author
--- all authors that does not have a book in the list
+-- Only authors that DO NOT have a book in the list
 
 
