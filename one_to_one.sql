@@ -33,3 +33,8 @@ INSERT INTO passports (passport_id, person_id, passport_number) VALUES
 (8, 8, 'H876543'),
 (9, 9, 'I210987'),
 (10, 10, 'J678901');
+
+-- show all the people with passport
+-- show all people with/without passport
+
+
