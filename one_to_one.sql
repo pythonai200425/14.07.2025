@@ -5,7 +5,7 @@ CREATE TABLE persons (
 
 CREATE TABLE passports (
     passport_number TEXT PRIMARY KEY,
-    person_id INTEGER UNIQUE,
+    person_id INTEGER UNIQUE NOT NULL,
     FOREIGN KEY (person_id) REFERENCES persons(person_id)
 );
 
